@@ -20,7 +20,7 @@ if [ -z "$HAPROXY_EXE" ]; then
     apt-get install -yqq haproxy
 
     # Config HAProxy
-    echo -e "\nlisten stats :1936\n      mode http\n      stats enable\n      stats hide-version\n      stats realm Haproxy\ Statistics\n      stats uri /\n      stats auth Username:Password\n" >> /etc/haproxy/haproxy.cfg 
+    echo -e "\nlisten stats :1936\n      mode http\n      stats enable\n      stats hide-version\n      stats realm Haproxy\ Statistics\n      stats uri /\n      stats auth Username:Password\n" | tee -a /etc/haproxy/haproxy.cfg 
     mkdir /dev/log
           
     # Run HAProxy
