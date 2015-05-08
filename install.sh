@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Check
+if [ `whoami` != "root" ]; then 
+	echo "Please run under the root user."
+	exit 2
+fi
+
 # Install base tool
 apt-get install -yqq software-properties-common
 apt-add-repository ppa:vbernat/haproxy-1.5
