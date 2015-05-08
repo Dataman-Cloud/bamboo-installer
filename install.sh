@@ -21,10 +21,11 @@ if [ -z "$HAPROXY_EXE" ]; then
 
     # Config HAProxy
     echo -e "\nlisten stats :1936\n      mode http\n      stats enable\n      stats hide-version\n      stats realm Haproxy\ Statistics\n      stats uri /\n      stats auth Username:Password\n" | tee -a /etc/haproxy/haproxy.cfg 
+    echo -e "\nENABLED=1\n" | tee -a /etc/default/haproxy 
     mkdir /dev/log
           
     # Run HAProxy
-    haproxy -f /etc/haproxy/haproxy.cfg -p /var/run/haproxy.pid
+    service haproxy start
 fi
 
 # Download dataman-bamboo
