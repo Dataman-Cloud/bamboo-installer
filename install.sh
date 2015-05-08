@@ -6,9 +6,17 @@ apt-add-repository ppa:vbernat/haproxy-1.5
 apt-get update -yqq
 apt-get install -yqq git curl wget tar gzip
 
+# Prepare Syslogd
+# Install Syslogd
+apt-get install -yqq busybox-syslogd
+
+# Run Syslogd
+syslogd -R 127.0.0.1 -L
+
+# Prepare HAProxy
 HAPROXY_EXE=`which haproxy`
 if [ -z "$HAPROXY_EXE" ]; then
-    # Download HAProxy
+    # Install HAProxy
     apt-get install -yqq haproxy
 
     # Config HAProxy
